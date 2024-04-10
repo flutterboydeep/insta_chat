@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insta/Screen/signupData/signUpEmail.dart';
+import 'package:insta/bloc/insta_bloc.dart';
 import 'package:insta/utils/colors.dart';
 import 'package:insta/widgest/widgets.dart';
 
@@ -27,12 +29,15 @@ class SignUpPhoneOtp extends StatelessWidget {
               children: [
                 Text("What's mobile number?",
                     style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(
+                  height: 10,
+                ),
                 Text(
                   "Enter the mobile number where you can be contacted. No one will see this on your profile",
                   // style: Theme.of(context).textTheme.titleMedium),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 TextFieldWidget(
                     textEditingController: emailCtrl,
@@ -53,7 +58,7 @@ class SignUpPhoneOtp extends StatelessWidget {
                   width: double.infinity,
                   child: CustomButton(
                     text: "Next",
-                    onPressed: () {},
+                    onPress: () {},
                     backgroundColor: blueColor,
                   ),
                 ),
@@ -62,7 +67,7 @@ class SignUpPhoneOtp extends StatelessWidget {
                 ),
                 CustomButton(
                     text: "Or using E-mail",
-                    onPressed: () {
+                    onPress: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => SignUp()));
                     }),
@@ -72,6 +77,7 @@ class SignUpPhoneOtp extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 60),
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 30),
                     keyboardType: TextInputType.number,
                     maxLength: 6,

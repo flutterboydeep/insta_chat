@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:insta/utils/colors.dart';
@@ -11,6 +11,8 @@ class TextFieldWidget extends StatelessWidget {
   final TextInputType textInputType;
   final bool filled;
   final int maxnum;
+  final bool readOnly;
+  final Widget suffixWidget;
 
   const TextFieldWidget({
     super.key,
@@ -20,6 +22,10 @@ class TextFieldWidget extends StatelessWidget {
     required this.textInputType,
     this.filled = true,
     this.maxnum = 10,
+    this.readOnly = false,
+    this.suffixWidget = const SizedBox(
+      width: 0,
+    ),
   });
 
   @override
@@ -27,16 +33,20 @@ class TextFieldWidget extends StatelessWidget {
     final inputBorder =
         OutlineInputBorder(borderSide: Divider.createBorderSide(context));
     return TextField(
+      readOnly: readOnly,
       // style: TextStyle(),
+      // textAlign: TextAlign.left,
 
       controller: textEditingController,
       decoration: InputDecoration(
+        prefix: SizedBox(width: 13),
+        suffixIcon: suffixWidget,
         hintText: hintText,
         border: inputBorder,
         focusedBorder: inputBorder,
         enabledBorder: inputBorder,
         filled: filled,
-        contentPadding: const EdgeInsets.all(10),
+        contentPadding: const EdgeInsets.all(2),
       ),
       keyboardType: textInputType,
       obscureText: ispass,
@@ -50,14 +60,14 @@ class CustomButton extends StatelessWidget {
 
   final String text;
 
-  final VoidCallback onPressed;
+  final VoidCallback onPress;
 
   const CustomButton({
     super.key,
     this.backgroundColor = Colors.transparent,
     this.borderSideColor = blueColor,
     required this.text,
-    required this.onPressed,
+    required this.onPress,
   });
 
   //  CustomButton({
@@ -81,7 +91,7 @@ class CustomButton extends StatelessWidget {
             side: BorderSide(color: blueColor),
           )),
         ),
-        onPressed: onPressed,
+        onPressed: onPress,
         child: Text(
           text,
           style: Theme.of(context).textTheme.titleMedium,
@@ -90,3 +100,11 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+// class BottomMessage extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context) {
+//     return ScaffoldMessenger.of(context)
+//             .showSnackBar(SnackBar(content: Text("Otp not send "))));
+//   }
+// }

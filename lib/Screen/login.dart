@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   child: CustomButton(
                     text: "Create new account",
-                    onPressed: () {
+                    onPress: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(

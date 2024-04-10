@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insta/Screen/login.dart';
+import 'package:insta/Screen/signupData/accountSignUpEmail.dart';
+
 import 'package:insta/bloc/insta_bloc.dart';
-import 'package:insta/utils/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,17 +28,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => InstaBloc(),
-        ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
-      ],
-      child: BlocBuilder<InstaBloc, InstaState>(
-        builder: (context, state) {
-          return MaterialApp(
+        providers: [
+          BlocProvider(
+            create: (context) => InstaBloc(),
+          ),
+          // BlocProvider(
+          //   create: (context) => SubjectBloc(),
+          // ),
+        ],
+        child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'InstagramApp',
             // theme: ThemeData(
@@ -46,8 +44,8 @@ class MyApp extends StatelessWidget {
             //   useMaterial3: true,
             // ),
 
-            theme: ThemeData.dark(
-              // brightness: Brightness.light,
+            theme: ThemeData(
+              brightness: Brightness.dark,
               useMaterial3: true,
             ).copyWith(
 
@@ -58,7 +56,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'noto',
                   fontWeight: FontWeight.bold),
               titleLarge: TextStyle(
-                  fontSize: 35,
+                  fontSize: 30,
                   fontFamily: 'noto',
                   fontWeight: FontWeight.bold),
               titleMedium: TextStyle(
@@ -74,10 +72,12 @@ class MyApp extends StatelessWidget {
             //   mobileScreenlayout: MobileScreenLayout(),
             //   webScreenlayout: WebScreenLayout(),
             // ),
-            home: LoginPage(),
-          );
-        },
-      ),
-    );
+            // ),
+            // home: AccountSignUp(
+            //     // verifidInfo: "PanwarDeep@gmail.com",
+            //     ),
+            home: AccountSignUp(
+              verifidInfo: "panwarDeep@gmail.com",
+            )));
   }
 }
